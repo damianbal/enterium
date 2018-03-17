@@ -9,9 +9,10 @@ use damianbal\enterium\entities\User;
 
 DB::getInstance()->connect('enterium');
 
-$users = User::builder()->order(['id'],'DESC')->limit(1)->get();
+$users = User::builder()->order(['id'],'DESC')->limit(1,0)->get();
 
 foreach($users as $user)
 {
     echo "<div>" . $user->wypisz() . "</div>";
 }
+
