@@ -1,0 +1,19 @@
+{
+    "name": "damianbal/enterium",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Damian",
+            "email": "balandowski@icloud.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit":"5.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "damianbal\\enterium\\":"src/"
+        }        
+    }
+}
