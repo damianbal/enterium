@@ -8,9 +8,6 @@ class User extends Entity
 {
     protected static $table = 'users';
 
-    public $username = "Username";
-    public $password = "Password";
-
     public function wypisz()
     {
         return "To jest " . $this->username . " ma haslo " . $this->password . " :D";

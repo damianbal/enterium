@@ -5,13 +5,41 @@ namespace damianbal\enterium;
 use damianbal\enterium\DB;
 use damianbal\enterium\QueryBuilder;
 use damianbal\enterium\EntityQueryBuilder;
+use damianbal\enterium\Relations;
 
 class Entity
 {
     protected static $table    = '';
-    protected static $props = [];
-    public $id       = null;
+    protected static $props    = [];
+    protected        $values   = [];
 
+    /**
+     * Set property
+     *
+     * @param string $name
+     * @param mixed $value
+     */
+    public function __set($name, $value)
+    {
+        $this->values[$name] = $value;
+    }
+
+    /**
+     * Return property
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        return $this->values[$name];
+    }
+
+    /**
+     * Create or load existing entity
+     *
+     * @param [type] $id
+     */
     public function __construct( $id = null )
     {
         if($id == null) 
@@ -54,5 +82,17 @@ class Entity
         }
 
         return $entity;
+    }
+
+    /**
+     * Delete entity 
+     *
+     * @return void
+     */
+    public function delete() : void
+    {
+        $q = "DELETE FROM " . static::$table . " WHERE id = :id";
+
+        DB::getInstance()->execute($q, [':id' => $this->id]);
     }
 }

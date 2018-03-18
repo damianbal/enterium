@@ -33,8 +33,8 @@ class EntityQueryBuilder extends QueryBuilder
         $res = parent::get($data);
 
         $entities = [];
-        
-        foreach($res as $r) 
+
+        foreach($res as $r)
         {
             $entities[] = Entity::convertObjToEntity($this->entity_class, $r);
         }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include 'vendor/autoload.php';
 
@@ -9,10 +9,8 @@ use damianbal\enterium\entities\User;
 
 DB::getInstance()->connect('enterium');
 
+
+
 $users = User::builder()->order(['id'],'DESC')->limit(1,0)->get();
 
-foreach($users as $user)
-{
-    echo "<div>" . $user->wypisz() . "</div>";
-}
-
+echo $users[0]->username;
