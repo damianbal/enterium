@@ -22,6 +22,7 @@ class User extends Entity
 
     protected static $props = [
         'username' => 'varchar(255)',
-        'password' => 'varchar(300)'
+        'password' => 'varchar(300)',
+        'id' => ''
     ];
 }

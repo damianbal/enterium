@@ -26,6 +26,35 @@ class QueryBuilder
     }
 
     /**
+     * Insert values into table
+     *
+     * @param [type] $values
+     * @return void
+     */
+    public function insert($values)
+    {
+        $columns = [];
+        $values1 = [];
+        
+        foreach($values as $key => $val)
+        {
+            $columns[] = $key;
+            $values1[] = ':'.$key;
+            $this->values[':'.$key] = $val;
+        }
+
+        $cols = implode(',', $columns);
+        $vals = implode(',',$values1);
+
+        $this->query = "INSERT INTO $this->table ($cols) VALUES ($vals)";
+    
+        //echo $this->query;
+        //var_dump($this->values);
+
+        return $this;
+    }
+
+    /**
      * Order by
      *
      * @param array $columns
@@ -51,7 +80,7 @@ class QueryBuilder
     {
         if($columns != '*')
         {
-            $cols = trim(implode(',', $columns), ',');
+            $cols = implode(',', $columns);
         }
         else {
             $cols = '*';

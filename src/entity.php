@@ -12,6 +12,7 @@ class Entity
     protected static $table    = '';
     protected static $props    = [];
     protected        $values   = [];
+    protected        $created  = false;
 
     /**
      * Set property
@@ -40,14 +41,23 @@ class Entity
      *
      * @param [type] $id
      */
-    public function __construct( $id = null )
+    public function __construct( $id = null, $create = false )
     {
-        if($id == null) 
+        if($this->create == false)
         {
-            echo "Creating";
+            $this->id = null;
+
+            if($id == null) 
+            {
+                echo "Creating";
+            }
+            else {
+                echo "Loading";
+            }
         }
-        else {
-            echo "Loading";
+        else 
+        {
+            // get by id
         }
     }
 
@@ -82,6 +92,52 @@ class Entity
         }
 
         return $entity;
+    }
+
+    /**
+     * Update entity
+     *
+     * @return void
+     */
+    public function save() : void
+    {
+        if($this->created == false)
+        {
+            $q = "UPDATE " . static::$table . " SET ";
+
+            $vals = [];
+            $qs   = [];
+            foreach($this->values as $key => $value) {
+                if($key != 'id')
+                {
+                    $qx = $key . " = :" . $key;
+                    $qs[] = $qx;
+                    $vals[':' . $key] = $value;
+                }
+            }
+
+            $q .= implode(',',$qs);
+
+            $q .= " WHERE id = :id";
+
+            $vals[':id'] = $this->id;
+
+            echo "<div>".$q."</div>";
+
+            DB::getInstance()->execute($q, $vals);
+        }
+        else 
+        {
+            // 
+            static::builder()->insert($this->values);
+        }
+    }
+
+    public static function create($vals = [])
+    {
+        $p = static::builder()->insert($vals)->get();
+
+        var_dump($p);
     }
 
     /**
