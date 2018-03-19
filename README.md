@@ -7,7 +7,7 @@ Look at this example, that line of code will return all users
 
 but if you want just one user you can do that
 
-    $user = new User(1);
+    $user = User::builder()->where('id', 1)->first();
 then you can delete that user 
 
     $user->delete();

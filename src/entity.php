@@ -5,10 +5,13 @@ namespace damianbal\enterium;
 use damianbal\enterium\DB;
 use damianbal\enterium\QueryBuilder;
 use damianbal\enterium\EntityQueryBuilder;
-use damianbal\enterium\Relations;
+use damianbal\enterium\EntityHelpers;
 
+// TODO: relations, cleanup, tweaks, create schema if it doesnt exist.
 class Entity
 {
+    use EntityHelpers;
+    
     protected static $table    = '';
     protected static $props    = [];
     protected        $values   = [];

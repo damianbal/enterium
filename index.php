@@ -28,6 +28,12 @@ foreach($users as $u) {
     $u->save();
 }*/
 
+//$latest_user = User::builder()->order(['id'], 'DESC')->limit(1)->first();
+$latest_user = User::latest();
+
+
+echo "<div>Latest user is: " . $latest_user->username . " :) </div>";
+
 foreach($users as $u) {
     echo "<div>#" . $u->id . " -> " . $u->username . "</div>";
 }

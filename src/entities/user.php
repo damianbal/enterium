@@ -3,7 +3,9 @@
 namespace damianbal\enterium\entities;
 
 use damianbal\enterium\Entity;
+use damianbal\enterium\EntityHelpers;
 
+// TODO: cleanup
 class User extends Entity 
 {
     protected static $table = 'users';

@@ -41,4 +41,15 @@ class EntityQueryBuilder extends QueryBuilder
 
         return $entities;
     }
+
+    /**
+     * Return first record
+     *
+     * @param array $data
+     * @return mixed
+     */
+    public function first($data = [])
+    {
+        return $this->get($data)[0];
+    }
 }
