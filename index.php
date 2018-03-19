@@ -20,9 +20,21 @@ echo $users[0]->username;
 
 $users = User::builder()->get();
 
+/*
 User::create(['username' => 'nowy', 'password' => 'bla']);
 
 foreach($users as $u) {
     $u->username = 'kupas';
     $u->save();
+}*/
+
+foreach($users as $u) {
+    echo "<div>#" . $u->id . " -> " . $u->username . "</div>";
+}
+
+if($_GET['p'] == 'create')
+{
+    $u = User::create(['username' => $_GET['un'], 'password' => $_GET['pw']]);
+
+    echo "Created: " . $u->username . " and password " . $u->password . "!";
 }

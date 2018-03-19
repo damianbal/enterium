@@ -133,11 +133,20 @@ class Entity
         }
     }
 
+    /**
+     * Create entity
+     *
+     * @param array $vals
+     * @return mixed
+     */
     public static function create($vals = [])
     {
         $p = static::builder()->insert($vals)->get();
 
-        var_dump($p);
+        // gets last element from table which is one we just inserted
+        $l = static::builder()->order(['id'], 'DESC')->limit(1)->get();
+
+        return $l[0];
     }
 
     /**

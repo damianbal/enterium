@@ -131,6 +131,17 @@ class QueryBuilder
     }
 
     /**
+     * Returns generated query
+     *
+     * @return string
+     */
+    public function getQuery() : string 
+    {
+        $trimmed_query = rtrim($this->query, ' ');
+        return $trimmed_query;
+    }
+
+    /**
      * Execute query and return results
      *
      * @param array $data
@@ -138,10 +149,8 @@ class QueryBuilder
      */
     public function get($data = [])
     {
-        $trimmed_query = rtrim($this->query, ' ');
-
         $new_data = array_merge($data, $this->values);
 
-        return DB::getInstance()->execute($trimmed_query, $new_data);
+        return DB::getInstance()->execute($this->getQuery(), $new_data);
     }
 }
