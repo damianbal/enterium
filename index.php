@@ -9,38 +9,14 @@ use damianbal\enterium\entities\User;
 
 DB::getInstance()->connect('enterium');
 
+$user = User::find( $_GET['id'] ?? 13 );
 
-/*
-$users = User::builder()->order(['id'],'DESC')->limit(1,0)->get();
+$adresy = $user->hasMany(\damianbal\enterium\entities\Address::class, 'user_id')->get();
 
-echo $users[0]->username;
-*/
+echo $user->username . " posiada takie adresy: <br>";
 
-///User::builder()->insert(['username' => 'hello', 'password' => 'mojehaslo'])->get();
-
-$users = User::builder()->get();
-
-/*
-User::create(['username' => 'nowy', 'password' => 'bla']);
-
-foreach($users as $u) {
-    $u->username = 'kupas';
-    $u->save();
-}*/
-
-//$latest_user = User::builder()->order(['id'], 'DESC')->limit(1)->first();
-$latest_user = User::latest();
-
-
-echo "<div>Latest user is: " . $latest_user->username . " :) </div>";
-
-foreach($users as $u) {
-    echo "<div>#" . $u->id . " -> " . $u->username . "</div>";
+foreach($adresy as $adres) {
+    echo $adres->wypisz_caly_adres();
 }
-
-if($_GET['p'] == 'create')
-{
-    $u = User::create(['username' => $_GET['un'], 'password' => $_GET['pw']]);
-
-    echo "Created: " . $u->username . " and password " . $u->password . "!";
-}
+//var_dump($adres);
+//var_dump($user);

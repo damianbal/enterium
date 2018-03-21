@@ -153,4 +153,16 @@ class QueryBuilder
 
         return DB::getInstance()->execute($this->getQuery(), $new_data);
     }
+
+    /**
+     * 
+     *
+     * @param array $data
+     * @return mixed
+     */
+    public function first($data = [])
+    {
+        $d = $this->get($data);
+        return $d[0];
+    }
 }

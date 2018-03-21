@@ -6,11 +6,12 @@ use damianbal\enterium\DB;
 use damianbal\enterium\QueryBuilder;
 use damianbal\enterium\EntityQueryBuilder;
 use damianbal\enterium\EntityHelpers;
+use damianbal\enterium\EntityRelations;
 
 // TODO: relations, cleanup, tweaks, create schema if it doesnt exist.
 class Entity
 {
-    use EntityHelpers;
+    use EntityHelpers, EntityRelations;
     
     protected static $table    = '';
     protected static $props    = [];
@@ -44,24 +45,9 @@ class Entity
      *
      * @param [type] $id
      */
-    public function __construct( $id = null, $create = false )
+    public function __construct()
     {
-        if($this->create == false)
-        {
-            $this->id = null;
-
-            if($id == null) 
-            {
-                echo "Creating";
-            }
-            else {
-                echo "Loading";
-            }
-        }
-        else 
-        {
-            // get by id
-        }
+        $this->id = null;
     }
 
     /**
