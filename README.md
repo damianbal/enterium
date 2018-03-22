@@ -7,7 +7,18 @@ Look at this example, that line of code will return all users
 
 but if you want just one user you can do that
 
-    $user = User::builder()->where('id', 1)->first();
+    $user = User::find(1);
 then you can delete that user 
 
     $user->delete();
+
+if you would like to get users which are admins you would do
+
+     $admin_users = User::builder()->where('is_admin', true)->get();
+
+to create user simply do
+
+    $new_user = User::create(['username' => 'new_user', 'password' => 'somepass']);
+    $new_user->password = 'updated_password';
+    $new_user->save(); // update user
+    
