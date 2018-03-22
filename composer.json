@@ -1,6 +1,7 @@
 {
     "name": "damianbal/enterium",
     "type": "library",
+    "description": "Enterium turns database tables into PHP classes with superpowers",
     "authors": [
         {
             "name": "Damian",

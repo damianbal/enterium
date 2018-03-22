@@ -13,10 +13,15 @@ $user = User::find( $_GET['id'] ?? 13 );
 
 $adresy = $user->hasMany(\damianbal\enterium\entities\Address::class, 'user_id')->get();
 
+$users_total = User::builder()->count();
+
+echo "Total users: " . $users_total;
+
 echo $user->username . " posiada takie adresy: <br>";
 
 foreach($adresy as $adres) {
-    echo $adres->wypisz_caly_adres();
+    echo $adres->street . "<br>";
 }
-//var_dump($adres);
-//var_dump($user);
+
+$address = \damianbal\enterium\entities\Address::find(2);
+echo $address->belongsTo(User::class, 'user_id')->first()->username;

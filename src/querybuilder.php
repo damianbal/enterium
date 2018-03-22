@@ -112,6 +112,46 @@ class QueryBuilder
     }
 
     /**
+     * Where and
+     *
+     * @param string $column
+     * @param string|integer|bool $value
+     * @param string $operator
+     * @return QueryBuilder
+     */
+    public function andWhere($column, $value, $operator = '=')
+    {
+        $column_id = ':'.$column;
+        $this->values[$column_id] = $value;
+
+        $q = "AND $column $operator $column_id ";
+
+        $this->query .= $q;
+
+        return $this;
+    }
+
+    /**
+     * Where or
+     *
+     * @param string $column
+     * @param string|integer|bool $value
+     * @param string $operator
+     * @return QueryBuilder
+     */
+    public function orWhere($column, $value, $operator = '=')
+    {
+        $column_id = ':'.$column;
+        $this->values[$column_id] = $value;
+
+        $q = "OR $column $operator $column_id ";
+
+        $this->query .= $q;
+
+        return $this;
+    }
+
+    /**
      * Limit
      *
      * @param [integer] $l
@@ -164,5 +204,15 @@ class QueryBuilder
     {
         $d = $this->get($data);
         return $d[0];
+    }
+
+    /**
+     * Number of results
+     *
+     * @return integer|int
+     */
+    public function count()
+    {
+        return count( $this->get() );
     }
 }
