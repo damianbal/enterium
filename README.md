@@ -21,4 +21,9 @@ to create user simply do
     $new_user = User::create(['username' => 'new_user', 'password' => 'somepass']);
     $new_user->password = 'updated_password';
     $new_user->save(); // update user
-    
+
+has many reltions is simply
+
+    $user->hasMany(Address::class, 'user_id')->get();
+
+but it can be implemented inside User entity class with $this->hasMany :)
