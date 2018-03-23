@@ -8,6 +8,7 @@ Look at this example, that line of code will return all users
 but if you want just one user you can do that
 
     $user = User::find(1);
+    
 then you can delete that user 
 
     $user->delete();
@@ -22,7 +23,7 @@ to create user simply do
     $new_user->password = 'updated_password';
     $new_user->save(); // update user
 
-has many reltions is simply
+has many relation is simply
 
     $user->hasMany(Address::class, 'user_id')->get();
 

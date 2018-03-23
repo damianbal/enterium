@@ -2,6 +2,10 @@
     "name": "damianbal/enterium",
     "type": "library",
     "description": "Enterium turns database tables into PHP classes with superpowers",
+    "version": "1.0",
+    "keywords": [
+        "php", "database"
+    ],
     "authors": [
         {
             "name": "Damian",

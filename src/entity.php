@@ -8,13 +8,12 @@ use damianbal\enterium\EntityQueryBuilder;
 use damianbal\enterium\EntityHelpers;
 use damianbal\enterium\EntityRelations;
 
-// TODO: relations, cleanup, tweaks, create schema if it doesnt exist.
 class Entity
 {
     use EntityHelpers, EntityRelations;
     
     protected static $table    = '';
-    protected static $props    = [];
+    protected static $attributes    = [];
     protected        $values   = [];
     protected        $created  = false;
 
@@ -75,7 +74,7 @@ class Entity
     {
         $entity = new $entity_class;
 
-        foreach(array_merge($entity_class::$props, ['id' => 'primary']) as $key => $value)
+        foreach(array_merge($entity_class::$attributes,['id']) as $key)
         {
             $entity->{$key} = $obj->{$key};
         }

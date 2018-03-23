@@ -21,7 +21,7 @@ trait EntityRelations
     }
 
     /**
-     * 
+     * Same as hasMany but returns only one record
      *
      * @param string|class $entity_class
      * @param string $foreign_key

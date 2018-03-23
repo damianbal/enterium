@@ -26,16 +26,14 @@ class DB
      */
     private function __construct() 
     {
-        /*$this->pdo = new \PDO("mysql:host=127.0.0.1;dbname=enterium", "root", "", array(\PDO::ATTR_EMULATE_PREPARES => false,
-        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION)); */
-
-        // $this->pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
     }
 
     public function connect($dbname, $host = '127.0.0.1', $user = 'root', $pass = '', $driver = 'mysql')
     {
-        $this->pdo = new \PDO("$driver:host=$host;dbname=$dbname", $user, $pass, array(\PDO::ATTR_EMULATE_PREPARES => false,
-        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
+        $this->pdo = new \PDO("$driver:host=$host;dbname=$dbname", $user, $pass, [
+            \PDO::ATTR_EMULATE_PREPARES => false,
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
+        ]);
 
         $this->pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
     }
