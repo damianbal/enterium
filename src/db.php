@@ -67,4 +67,17 @@ class DB
         $stmt->execute($data);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Execute .sql file. Useful for creating tables. Simply export your database into ".sql" and then run it with that method.
+     *
+     * @param [type] $file
+     * @return void
+     */
+    public function run($file)
+    {
+        $sql = file_get_contents($file);
+
+        $this->execute($sql);
+    }
 }
