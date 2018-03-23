@@ -32,3 +32,9 @@ has many relation is simply
     $user->hasMany(Address::class, 'user_id')->get();
 
 but it can be implemented inside User entity class with $this->hasMany :)
+
+Also if you want to just make your own queries without Entities then you can do that to.
+
+    QueryBuilder::builder()->select()->where('id', 3, '>')->get();
+
+that line above will return all users with id over 3, then you can access properties using -> syntax :) 
