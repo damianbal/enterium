@@ -1,8 +1,5 @@
 
-[![Packagist](https://img.shields.io/packagist/v/symfony/symfony.svg)](https://github.com/damianbal/enterium)
-
-
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/symfony/symfony.svg)](https://github.com/damianbal/enterium)
+[![Packagist](https://img.shields.io/packagist/v/symfony/symfony.svg)](https://github.com/damianbal/enterium) [![PHP from Packagist](https://img.shields.io/packagist/php-v/symfony/symfony.svg)](https://github.com/damianbal/enterium)
 
 
 ## Enterium
