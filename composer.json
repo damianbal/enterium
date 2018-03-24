@@ -3,6 +3,7 @@
     "type": "library",
     "description": "Enterium turns database tables into PHP classes with superpowers",
     "version": "1.0",
+    "minimum-stability": "stable",
     "keywords": [
         "php", "database"
     ],
