@@ -64,6 +64,22 @@ class Entity
     }
 
     /**
+     * QueryBuilder which returns standard php object when get() is called.
+     * Useful for returing json
+     *
+     * @return void
+     */
+    public static function queryBuilder()
+    {
+        if(!empty(static::$visible))
+        {
+            return QueryBuilder::builder(static::$table)->select(static::$visible);
+        }
+
+        return QueryBuilder::builder(static::$table)->select();
+    }
+
+    /**
      * Converts stdClass to Entity dervided class
      *
      * @param class $entity_class

@@ -195,6 +195,17 @@ class QueryBuilder
     }
 
     /**
+     * Return query as json
+     *
+     * @param array $data
+     * @return mixed
+     */
+    public function json($data = [])
+    {
+        return json_encode($this->get());
+    }
+
+    /**
      * 
      *
      * @param array $data
