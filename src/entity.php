@@ -99,6 +99,25 @@ class Entity
     }
 
     /**
+     * Convert entity into array
+     *
+     * @param [type] $entity_class
+     * @param [type] $entity
+     * @return void
+     */
+    public static function convertEntityToArray($entity_class, $entity)
+    {
+        $arr = [];
+
+        foreach(array_merge($entity_class::$attributes,['id']) as $key)
+        {
+            $arr[$key]= $entity->{$key};
+        }
+
+        return $arr;
+    }
+
+    /**
      * Update entity
      *
      * @return void
@@ -111,6 +130,7 @@ class Entity
 
             $vals = [];
             $qs   = [];
+
             foreach($this->values as $key => $value) {
                 if($key != 'id')
                 {
@@ -125,8 +145,6 @@ class Entity
             $q .= " WHERE id = :id";
 
             $vals[':id'] = $this->id;
-
-            echo "<div>".$q."</div>";
 
             DB::getInstance()->execute($q, $vals);
         }
