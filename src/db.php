@@ -71,7 +71,7 @@ class DB
     /**
      * Execute .sql file. Useful for creating tables. Simply export your database into ".sql" and then run it with that method.
      *
-     * @param [type] $file
+     * @param string $file
      * @return void
      */
     public function run($file)

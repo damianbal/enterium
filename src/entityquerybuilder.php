@@ -52,4 +52,16 @@ class EntityQueryBuilder extends QueryBuilder
     {
         return $this->get($data)[0];
     }
+
+    /**
+     * Do something on each entity with closure.
+     */
+    public function tap(callable $cb) 
+    {
+        $results = $this->get();
+
+        foreach($results as $result) {
+            $cb($result);
+        }
+    }
 }

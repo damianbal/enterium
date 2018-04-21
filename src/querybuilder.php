@@ -171,6 +171,19 @@ class QueryBuilder
     }
 
     /**
+     * GROUP BY
+     *
+     * @param string $column
+     * @param string $type
+     * @return damianbal\enterium\QueryBuilder
+     */
+    public function group($column, $sort = 'ASC')
+    {
+        $this->query .= "GROUP BY $column $type ";
+        return $this;
+    }
+
+    /**
      * Returns generated query
      *
      * @return string
